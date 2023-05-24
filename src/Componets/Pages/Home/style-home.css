@@ -1,22 +1,15 @@
 .corpo{
     background-color: brown;
 }
-
-.subTitle-home, .valores-home{
+.home{
+    display: flex;
+}
+.subTitle-home, .valores-home, .notas{
     list-style-type: none;
 
-    display: flex;
-    justify-content: space-around;
-
     text-align: center;
+    width: 100%;
 }
 .subTitle-home li{
-    width: 100%;
     background-color: blue;
-}
-.valores-home li{
-
-    width: 100%;
-    background-color: blue;
-    padding: 10px 0;
 }

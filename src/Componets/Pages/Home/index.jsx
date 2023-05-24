@@ -8,56 +8,87 @@ import { getDocs, collection, onSnapshot, query, QuerySnapshot } from "firebase/
 
 
 export default function Home(){
-    const [name, setName] = useState({});
-    const [name2, setName2] = useState({});
+    const [alunos, setAlunos] = useState({});
+    const [notas, setNotas] = useState({})
 
     useEffect(() => {
 
         async function getAlunos(db){
             const q = query(collection(db, "turmaA"));
             onSnapshot(q, (querySnapshot)=>{
-                setName(querySnapshot.docs.map(doc => ({
+                setAlunos(querySnapshot.docs.map(doc => ({
                     nomes: doc.data()
                 })))
             })
-           
         }
          getAlunos(db)
-        
     },[])
 
-    if(name.length >0 ){
-       setName2(name.forEach(element => {
-        `<div>daad</div>`
-    }))
-    }
+
     
-    
-        
-        // name.forEach((doc) => {
-        //   console.log(doc.data.nome)
-        // });
+   
+
+    // if(teste.legth != undefined){
+    //     let i;
+    //     for( i = 0; i < teste.legth; i++){
+    //         console.log(teste.nomes.data[i])
+    //     }
+    // }
 
     return(
         <>
             <Navbar/>
 
+            <div className="home">
+                <ul className="subTitle-home">
+                    <h1>Nomes</h1>
+                    { alunos[0] &&
+                        alunos.map((e) =>(
+                            <li className="home-card" >
+                                <h2>{e.nomes.nome + " " + e.nomes.sobrenome}</h2>
+                            
+                            </li> 
+                    ))}
+                </ul>
 
-            <ul className="subTitle-home">
-                <li><h1>a</h1></li>
-                <li><h1>Nota1</h1></li>
-                <li><h1>Nota2</h1></li>
-                <li><h1>Nota3</h1></li>
-                <li><h1>Nota4</h1></li>
-                <li><h1>Situação</h1></li>
-            </ul>
-        
+                <ul className="notas">
+                <h1>Nota 1</h1>
+                    {alunos[0] &&
+                    alunos.map((e) =>(
+                        <li className="home-card"><h2>{e.nomes.notas.nota1}</h2></li>
+
+                    ))}
+                </ul>
+
+                <ul className="notas">
+                <h1>Nota 2</h1>
+                    {alunos[0] &&
+                    alunos.map((e) =>(
+                        <li className="home-card"><h2>{e.nomes.notas.nota2}</h2></li>
+
+                    ))}
+                </ul>
+
+                <ul className="notas">
+                <h1>Nota 3</h1>
+                    {alunos[0] &&
+                    alunos.map((e) =>(
+                        <li className="home-card"><h2>{e.nomes.notas.nota3}</h2></li>
+
+                    ))}
+                </ul>
+
+                <ul className="notas">
+                <h1>Nota 4</h1>
+                    {alunos[0] &&
+                    alunos.map((e) =>(
+                        <li className="home-card"><h2>{e.nomes.notas.nota4}</h2></li>
+
+                    ))}
+                </ul>
+                
+            </div>
             
-
-
-
-
-
         </>
     )
 }
