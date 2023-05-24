@@ -1,0 +1,3 @@
+npm i @hookform/resolvers
+npm install react-hook-form
+npm i yup

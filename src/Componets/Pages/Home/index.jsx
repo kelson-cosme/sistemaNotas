@@ -25,15 +25,6 @@ export default function Home(){
     },[])
 
 
-    
-   
-
-    // if(teste.legth != undefined){
-    //     let i;
-    //     for( i = 0; i < teste.legth; i++){
-    //         console.log(teste.nomes.data[i])
-    //     }
-    // }
 
     return(
         <>
