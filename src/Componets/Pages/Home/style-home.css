@@ -1,0 +1,22 @@
+.corpo{
+    background-color: brown;
+}
+
+.subTitle-home, .valores-home{
+    list-style-type: none;
+
+    display: flex;
+    justify-content: space-around;
+
+    text-align: center;
+}
+.subTitle-home li{
+    width: 100%;
+    background-color: blue;
+}
+.valores-home li{
+
+    width: 100%;
+    background-color: blue;
+    padding: 10px 0;
+}
