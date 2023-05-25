@@ -1,3 +1,10 @@
 .title{
     text-align: center;
+    background-color: #d2d6de;
+    padding: 10px 0;
+    margin: 20px 0;
+}
+.title p{
+    color: #00091c;
+    font-size: 25px;
 }

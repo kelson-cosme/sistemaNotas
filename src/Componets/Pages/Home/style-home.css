@@ -1,15 +1,45 @@
-.corpo{
-    background-color: brown;
+.corpo-home{
+    border: #5e7e95 solid 1px;
+    border-radius: 3px;
 }
-.home{
-    display: flex;
+.valores-home{
+    width: calc(100% - 20px);
+    margin: auto;
 }
-.subTitle-home, .valores-home, .notas{
+.home-card{
     list-style-type: none;
 
-    text-align: center;
-    width: 100%;
+    padding: 20px;
+    
+    display: flex;
+    justify-content: space-between;
 }
-.subTitle-home li{
-    background-color: blue;
+.title-home{
+    background-color: #5e7e95;
+    text-align: center;
+    padding: 10px 0;
+}
+.title-home h3{
+    color: #ffff;
+}
+.card-home .home-nota{
+    border: #d2d6de solid 1px;
+    padding: 10px;
+    text-align: center;
+}
+.home-nome{
+    width: 19%;
+}
+.home-nota{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.color1{
+    background-color: #f9f9f9;
+}
+.color2{
+    background-color: #FFF;
 }
