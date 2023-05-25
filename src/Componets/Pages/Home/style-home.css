@@ -5,6 +5,7 @@
 .valores-home{
     width: calc(100% - 20px);
     margin: auto;
+    
 }
 .home-card{
     list-style-type: none;
@@ -17,15 +18,24 @@
 .title-home{
     background-color: #5e7e95;
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 40px;
 }
 .title-home h3{
     color: #ffff;
 }
+
 .card-home .home-nota{
     border: #d2d6de solid 1px;
     padding: 10px;
     text-align: center;
+}
+.botao-home {
+    padding: 10px;
+    text-align: center;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .home-nome{
     width: 19%;

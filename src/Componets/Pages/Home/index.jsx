@@ -9,7 +9,7 @@ import { getDocs, collection, onSnapshot, query, QuerySnapshot } from "firebase/
 
 export default function Home(){
     const [alunos, setAlunos] = useState({});
-    const [notas, setNotas] = useState({})
+    const [CustomersData, setCustomersData] = useState([])
 
     useEffect(() => {
 
@@ -20,8 +20,19 @@ export default function Home(){
                     nomes: doc.data()
                 })))
             })
+        
+            const querySnapshot = await getDocs(q);
+            setCustomersData(querySnapshot.docs.map(doc => ({
+                id: doc.id,
+                data: doc.data()
+            })))
+
+            console.log(CustomersData)
+
+
         }
          getAlunos(db)
+
     },[])
 
 
@@ -37,10 +48,10 @@ export default function Home(){
                     <li className="home-nota"><h3>Nota 2</h3></li>
                     <li className="home-nota"><h3>Nota 3</h3></li>
                     <li className="home-nota"><h3>Nota 4</h3></li>
+                    <li className="home-nota"><h3>Editar</h3></li>
 
                 </ul>
 
-                {console.log(alunos.length)}
                 {alunos[0] &&
                     alunos.map((e) =>(
                         <ul className="home-card card-home ">
@@ -49,6 +60,7 @@ export default function Home(){
                             <li className="home-nota">{e.nomes.notas.nota2}</li>
                             <li className="home-nota">{e.nomes.notas.nota3}</li>
                             <li className="home-nota">{e.nomes.notas.nota4}</li>
+                            <li className="botao-home"><button>Editar</button></li>
                         </ul>
                 ))}
             </div>
