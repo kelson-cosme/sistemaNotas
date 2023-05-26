@@ -4,14 +4,12 @@ import "./style-home.css"
 import Navbar from "../../Header/NavBar/index"
 
 import React, {useState, useEffect} from "react";
-import { getDocs, collection, onSnapshot, query, QuerySnapshot, updateDoc, doc} from "firebase/firestore";
+import { collection, onSnapshot, query, updateDoc, doc} from "firebase/firestore";
 
 let identificador;
 
 export default function Home(){
     const [alunos, setAlunos] = useState({});
-    const [CustomersData, setCustomersData] = useState([])
-
     const [atualizarAlunos, setAtualizarAlunos] = useState([]);
     const [atualizarSobrenome, setAtualizarSobrenome] = useState([]);
     const [atualizarNotas1, setAtualizarNotas] = useState([]);
@@ -31,6 +29,8 @@ export default function Home(){
         setAtualizarNotas4(a.nomes.notas.nota4)
     }
 
+
+
     const updateData = () => {
         const teste = doc(db, "turmaA", identificador);
         updateDoc(teste, {
@@ -44,14 +44,10 @@ export default function Home(){
 
         }
         });
-        setAtualizarAlunos("");
-        setAtualizarSobrenome("")
-        setAtualizarNotas("")
-        setAtualizarNotas2("")
-        setAtualizarNotas3("")
-        setAtualizarNotas4("")
-        identificador = ""
+        zerarInputs();
     }
+
+
     useEffect(() => {
 
         async function getAlunos(db){
@@ -66,6 +62,19 @@ export default function Home(){
          getAlunos(db)
 
     },[])
+    
+
+    // zerar os valores dos inputs
+    function zerarInputs(){
+        setAtualizarAlunos("");
+        setAtualizarSobrenome("")
+        setAtualizarNotas("")
+        setAtualizarNotas2("")
+        setAtualizarNotas3("")
+        setAtualizarNotas4("")
+        identificador = ""
+    }
+
 
     return(
         <section className="corpo-home">
