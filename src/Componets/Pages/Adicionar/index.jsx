@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import {db} from "../../../Firebase"
-import { collection, addDoc , query, setDoc} from "firebase/firestore";
+import { collection, addDoc} from "firebase/firestore";
 
 import "./style-adicionar.css"
 
@@ -18,8 +18,8 @@ export default function Adicionar(){
 
 
     const getAlunos = () => {
-        if(nomeAluno && sobrenomeAlnuno && nota1 && nota2 && nota3 && nota4 != ""){
-            const docRef = addDoc(collection(db, "turmaA"), {
+        if(nomeAluno && sobrenomeAlnuno && nota1 && nota2 && nota3 && nota4 !== ""){
+            addDoc(collection(db, "turmaA"), {
                 nome: nomeAluno,
                 sobrenome: sobrenomeAlnuno,
                 notas: {
