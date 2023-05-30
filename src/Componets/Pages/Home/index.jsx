@@ -2,7 +2,6 @@ import {db} from "../../../Firebase"
 
 import "./style-home.css"
 import Navbar from "../../Header/NavBar/index"
-import Menu from "../../Menu"
 
 import React, {useState, useEffect} from "react";
 import { collection, onSnapshot, query, updateDoc, doc, deleteDoc } from "firebase/firestore";
@@ -27,6 +26,7 @@ export default function Home(){
         console.log(divAtualizar.className)
 
         if(divAtualizar.className === "desaparecer"){
+            divAtualizar.style.transform = "translateX(0)"
             divAtualizar.classList.remove("desaparecer")
             divAtualizar.classList.add("aparecer")
         
@@ -44,6 +44,7 @@ export default function Home(){
 
     const fechar = () => {
         if(divAtualizar.className === "aparecer"){
+            divAtualizar.style.transform = "translateX(-110%)"
             divAtualizar.classList.remove("aparecer")
             divAtualizar.classList.add("desaparecer")
 
@@ -107,7 +108,7 @@ export default function Home(){
 
 
                 <div className="desaparecer" id="atualizar-home">
-                    <div>
+                    <div className="cabecalho2-home">
                         <h1>Atualizar dados</h1>
                         <div onClick={fechar} id="menu-mobile">
                             <div id="line1"></div>

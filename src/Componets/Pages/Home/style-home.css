@@ -1,25 +1,75 @@
 .corpo-home{
     border: #5e7e95 solid 1px;
     border-radius: 3px;
+
+    overflow: hidden;
 }
 #atualizar-home{
-    background-color: brown;
-
-    width: 100%;
-    height: 100%;
+    background-color: #ffff;
+    width: calc(100% - 100px);
+    margin: auto;
+    height: 90%;
     position: fixed;
-    left: 0;
     top: 0;
+
+    border: #5e7e95 solid 2px;
+    border-radius: 3px;
+
+    transform: translateX(-120%);
+    transition: .5s;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+
 }
-#atualizar-home h1, #atualizar-home p{
-    color: black;
+
+#atualizar-home h1{
+    color: #fff;
+    padding: 10px;
+}
+#atualizar-home input{
+    box-shadow: 0 0 0 0;
+    outline: 0;
+    border: #d2d6de solid 1px;
+
+
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px 0;
+
+    border-radius: 5px;
+}
+#atualizar-home button{
+    cursor: pointer;
 }
 .aparecer{
-    display: block;
+    opacity: 1;
+
 }
+.desaparecer{
+    opacity: 0;
+}
+/* Inputs atualizar */
+.cabecalho2-home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5e7e95;
+    width: 100%;
+}
+
+
+
+
 #menu-mobile{
     display: block;
     padding: 10px 0;
+
+    cursor: pointer;
 }
 
 #menu-mobile div{
@@ -40,9 +90,7 @@
   #line3{
     transform: rotate(45deg) translate(-3px, -4px);
   }
-.desaparecer{
-    display: none;
-}
+
 .valores-home{
     width: calc(100% - 20px);
     margin: auto;
@@ -76,6 +124,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+}
+.botao-home button{
+    cursor: pointer;
+
 }
 .home-nome{
     width: 19%;

@@ -8,3 +8,11 @@
     color: #00091c;
     font-size: 25px;
 }
+.criar-navBar{
+    position: absolute;
+    right: 58px;
+    top: 28px;
+}
+.criar-navBar a{
+    text-decoration: none;
+}
