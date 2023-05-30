@@ -32,6 +32,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 -   **[React Roter Dom](https://reactrouter.com/en/v6.3.0)**
 -   **[Firebase](https://firebase.google.com/?hl=pt&authuser=0)**
+-   **[Hooks](https://legacy.reactjs.org/docs/hooks-intro.html)**
 
 ---
 ## 🦸 Author
