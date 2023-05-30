@@ -15,11 +15,33 @@
     color: black;
 }
 .aparecer{
-    left: 100%;
-
+    display: block;
 }
+#menu-mobile{
+    display: block;
+    padding: 10px 0;
+}
+
+#menu-mobile div{
+    width: 40px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+    border-radius: 10px;
+
+    transition: .5s;
+}
+#line1{
+    transform: rotate(-45deg) translate(-8px, 8px);
+  }
+  #line2{
+    opacity: 0;
+  }
+  #line3{
+    transform: rotate(45deg) translate(-3px, -4px);
+  }
 .desaparecer{
-    left: -100%;
+    display: none;
 }
 .valores-home{
     width: calc(100% - 20px);

@@ -2,11 +2,13 @@ import {db} from "../../../Firebase"
 
 import "./style-home.css"
 import Navbar from "../../Header/NavBar/index"
+import Menu from "../../Menu"
 
 import React, {useState, useEffect} from "react";
 import { collection, onSnapshot, query, updateDoc, doc, deleteDoc } from "firebase/firestore";
 
 let identificador;
+
 
 export default function Home(){
     const [alunos, setAlunos] = useState({});
@@ -27,6 +29,7 @@ export default function Home(){
         if(divAtualizar.className === "desaparecer"){
             divAtualizar.classList.remove("desaparecer")
             divAtualizar.classList.add("aparecer")
+        
         }
 
         identificador = a.id;
@@ -40,10 +43,10 @@ export default function Home(){
     }
 
     const fechar = () => {
-        console.log(divAtualizar.className)
         if(divAtualizar.className === "aparecer"){
             divAtualizar.classList.remove("aparecer")
             divAtualizar.classList.add("desaparecer")
+
         }
     }
 
@@ -95,6 +98,8 @@ export default function Home(){
         identificador = ""
     }
 
+    
+
 
     return(
         <section className="corpo-home">
@@ -104,7 +109,11 @@ export default function Home(){
                 <div className="desaparecer" id="atualizar-home">
                     <div>
                         <h1>Atualizar dados</h1>
-                        <h3 onClick={fechar}>fechar</h3>
+                        <div onClick={fechar} id="menu-mobile">
+                            <div id="line1"></div>
+                            <div id="line2"></div>
+                            <div id="line3"></div>
+                        </div>
                     </div>
                     {/* Input irá aparecer após querer atualizar alguma informação */}
                     <input className="notas-adicionar" type="text" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarAlunos} onChange={(e) => setAtualizarAlunos(e.target.value)}/>
