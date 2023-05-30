@@ -8,7 +8,7 @@ export default function NavBar(){
         <>
             <div className="title"><p>Alunos da Turma</p>
 
-                <div className="criar-navBar"><button><Link to={"/new"} target="_blank">Novos Alunos</Link></button></div>
+                <div className="criar-navBar"><button><Link to={"/new"} >Novos Alunos</Link></button></div>
             </div>                
         </>
     )
