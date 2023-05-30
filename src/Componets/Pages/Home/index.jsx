@@ -4,7 +4,7 @@ import "./style-home.css"
 import Navbar from "../../Header/NavBar/index"
 
 import React, {useState, useEffect} from "react";
-import { collection, onSnapshot, query, updateDoc, doc} from "firebase/firestore";
+import { collection, onSnapshot, query, updateDoc, doc, deleteDoc } from "firebase/firestore";
 
 let identificador;
 
@@ -17,9 +17,18 @@ export default function Home(){
     const [atualizarNotas3, setAtualizarNotas3] = useState([]);
     const [atualizarNotas4, setAtualizarNotas4] = useState([]);
 
+    const divAtualizar = document.getElementById("atualizar-home")
 
     
-    function pegarId(a){
+    function pegarValoresUpdate(a){
+
+        console.log(divAtualizar.className)
+
+        if(divAtualizar.className === "desaparecer"){
+            divAtualizar.classList.remove("desaparecer")
+            divAtualizar.classList.add("aparecer")
+        }
+
         identificador = a.id;
         setAtualizarAlunos(a.nomes.nome);
         setAtualizarSobrenome(a.nomes.sobrenome)
@@ -27,9 +36,16 @@ export default function Home(){
         setAtualizarNotas2(a.nomes.notas.nota2)
         setAtualizarNotas3(a.nomes.notas.nota3)
         setAtualizarNotas4(a.nomes.notas.nota4)
+       
     }
 
-
+    const fechar = () => {
+        console.log(divAtualizar.className)
+        if(divAtualizar.className === "aparecer"){
+            divAtualizar.classList.remove("aparecer")
+            divAtualizar.classList.add("desaparecer")
+        }
+    }
 
     const updateData = () => {
         const teste = doc(db, "turmaA", identificador);
@@ -41,10 +57,14 @@ export default function Home(){
             nota2: atualizarNotas2,
             nota3: atualizarNotas3,
             nota4: atualizarNotas4,
-
         }
         });
         zerarInputs();
+    }
+
+    const excluir = (e) => {
+        identificador = e.id
+        deleteDoc(doc(db, "turmaA", identificador));
     }
 
 
@@ -78,34 +98,23 @@ export default function Home(){
 
     return(
         <section className="corpo-home">
-            <Navbar/>
+                <Navbar/>
 
-            {/* Input irá aparecer após querer atualizar alguma informação */}
-            <div>
-                <input className="notas-adicionar" type="text" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarAlunos} onChange={(e) => setAtualizarAlunos(e.target.value)}/>
-            </div>
 
-            <div>
-                <input className="notas-adicionar" type="text" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarSobrenome} onChange={(e) => setAtualizarSobrenome(e.target.value)}/>
-            </div>
-
-            <div>
-                <input className="notas-adicionar" type="number" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarNotas1} onChange={(e) => setAtualizarNotas(parseFloat(e.target.value))}/>
-            </div>
-
-            <div>
-                <input className="notas-adicionar" type="number" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarNotas2} onChange={(e) => setAtualizarNotas2(parseFloat(e.target.value))}/>
-            </div>
-
-            <div>
-                <input className="notas-adicionar" type="number" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarNotas3} onChange={(e) => setAtualizarNotas3(parseFloat(e.target.value))}/>
-            </div>
-
-            <div>
-                <input className="notas-adicionar" type="number" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarNotas4} onChange={(e) => setAtualizarNotas4(parseFloat(e.target.value))}/>
-            </div>
-            
-            <button onClick={updateData}>Atualizar</button>
+                <div className="desaparecer" id="atualizar-home">
+                    <div>
+                        <h1>Atualizar dados</h1>
+                        <h3 onClick={fechar}>fechar</h3>
+                    </div>
+                    {/* Input irá aparecer após querer atualizar alguma informação */}
+                    <input className="notas-adicionar" type="text" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarAlunos} onChange={(e) => setAtualizarAlunos(e.target.value)}/>
+                    <input className="notas-adicionar" type="text" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarSobrenome} onChange={(e) => setAtualizarSobrenome(e.target.value)}/>
+                    <input className="notas-adicionar" type="number" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarNotas1} onChange={(e) => setAtualizarNotas(parseFloat(e.target.value))}/>
+                    <input className="notas-adicionar" type="number" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarNotas2} onChange={(e) => setAtualizarNotas2(parseFloat(e.target.value))}/>
+                    <input className="notas-adicionar" type="number" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarNotas3} onChange={(e) => setAtualizarNotas3(parseFloat(e.target.value))}/>
+                    <input className="notas-adicionar" type="number" placeholder="Digite a nota 1 do Aluno(a)" value={atualizarNotas4} onChange={(e) => setAtualizarNotas4(parseFloat(e.target.value))}/>
+                    <button onClick={updateData}>Atualizar</button>
+                </div>
 
 
             <div className="valores-home">
@@ -116,18 +125,20 @@ export default function Home(){
                     <li className="home-nota"><h3>Nota 3</h3></li>
                     <li className="home-nota"><h3>Nota 4</h3></li>
                     <li className="home-nota"><h3>Editar</h3></li>
+                    <li className="home-nota"><h3>Excluir</h3></li>
 
                 </ul>
 
                 {alunos[0] &&
-                    alunos.map((e, ) =>(
+                    alunos.map((e) =>(
                         <ul className="home-card card-home ">
                             <li className="home-nome"><h2>{e.nomes.nome + " "+ e.nomes.sobrenome}</h2></li>
                             <li className="home-nota">{e.nomes.notas.nota1}</li>
                             <li className="home-nota">{e.nomes.notas.nota2}</li>
                             <li className="home-nota">{e.nomes.notas.nota3}</li>
                             <li className="home-nota">{e.nomes.notas.nota4}</li>
-                            <li className="botao-home"><button onClick={() => pegarId(e)}>Editar</button></li>
+                            <li className="botao-home"><button onClick={() => pegarValoresUpdate(e)}>Editar</button></li>
+                            <li className="botao-home"><button onClick={() => excluir(e)} >Excluir</button></li>
                         </ul>
                 ))}
             </div>
