@@ -1,6 +1,6 @@
 ## 💻 About
 
-O Projeto Sistema de notas é uma aplicação Web como objetivo mostrar a aplicação dos estudos em Firebase, podendo criar um novo cadastro de um aluno (com notas do primeiro e quarto semestre), editar e excluir.
+O Projeto Sistema de notas é uma aplicação Web como objetivo mostrar a aplicação dos estudos em Firebase, podendo criar um novo cadastro de um aluno (com notas do primeiro ao quarto semestre), editar e excluir.
 
 O principal conceito treinado nesta aplicação foi a utilização do banco de dados Firebadase.
 
