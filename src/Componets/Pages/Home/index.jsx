@@ -52,18 +52,22 @@ export default function Home(){
     }
 
     const updateData = () => {
-        const teste = doc(db, "turmaA", identificador);
-        updateDoc(teste, {
-        nome: atualizarAlunos,
-        sobrenome: atualizarSobrenome,
-        notas:{
-            nota1: atualizarNotas1,
-            nota2: atualizarNotas2,
-            nota3: atualizarNotas3,
-            nota4: atualizarNotas4,
+
+        if(atualizarAlunos && atualizarSobrenome && atualizarNotas1 && atualizarNotas2 && atualizarNotas3 && atualizarNotas4 !== ""){
+            const teste = doc(db, "turmaA", identificador);
+            updateDoc(teste, {
+            nome: atualizarAlunos,
+            sobrenome: atualizarSobrenome,
+            notas:{
+                nota1: atualizarNotas1,
+                nota2: atualizarNotas2,
+                nota3: atualizarNotas3,
+                nota4: atualizarNotas4,
+            }
+            });
+            zerarInputs();
         }
-        });
-        zerarInputs();
+        
     }
 
     const excluir = (e) => {
