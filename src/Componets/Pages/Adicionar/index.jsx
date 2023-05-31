@@ -50,7 +50,7 @@ export default function Adicionar(){
                 <label><h1>Nome do Aluno:</h1></label>
                 <input type="text" placeholder="Digite o nome do Aluno(a)" value={nomeAluno} onChange={(e) => setNomeAluno(e.target.value)}/>
                 <label ><h1>Sobrenome</h1></label>
-                <input type="text" placeholder="Digite o nome do Aluno(a)" value={sobrenomeAlnuno} onChange={(e) => setSobrenomeAluno(e.target.value)}/>
+                <input type="text" placeholder="Digite o sobrenome do Aluno(a)" value={sobrenomeAlnuno} onChange={(e) => setSobrenomeAluno(e.target.value)}/>
                 
                 <div className="notas-block">
                     <div>
