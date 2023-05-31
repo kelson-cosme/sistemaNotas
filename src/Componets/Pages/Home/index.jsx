@@ -99,9 +99,6 @@ export default function Home(){
         identificador = ""
     }
 
-    
-
-
     return(
         <section className="corpo-home">
                 <Navbar/>

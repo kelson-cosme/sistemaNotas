@@ -2,6 +2,9 @@ import React, { useState } from "react";
 
 import {db} from "../../../Firebase"
 import { collection, addDoc} from "firebase/firestore";
+import { Link } from "react-router-dom";
+
+import Voltar from "../../Imagens/arrow.png"
 
 import "./style-adicionar.css"
 
@@ -42,10 +45,11 @@ export default function Adicionar(){
     
     return(
             <div className="form-Adicionar">
+                <Link className="voltar-adicionar" to={"/"}> <img src={Voltar} alt="Flecha"/></Link>
                 {/* Colocar o valor ao escrever */}
-                <label>Nome do Aluno:</label>
+                <label><h1>Nome do Aluno:</h1></label>
                 <input type="text" placeholder="Digite o nome do Aluno(a)" value={nomeAluno} onChange={(e) => setNomeAluno(e.target.value)}/>
-                <label >Sobrenome</label>
+                <label ><h1>Sobrenome</h1></label>
                 <input type="text" placeholder="Digite o nome do Aluno(a)" value={sobrenomeAlnuno} onChange={(e) => setSobrenomeAluno(e.target.value)}/>
                 
                 <div className="notas-block">
@@ -73,7 +77,7 @@ export default function Adicionar(){
                     </div>
                 </div>
                 
-                <button onClick={getAlunos} >Enviar</button>
+                <button className="enviar-adicionar" onClick={getAlunos} >Enviar</button>
             </div>
 
     );
